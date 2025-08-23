@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria Esercizi - Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-green-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="homeclient.html" class="text-xl font-bold">La Mia Dashboard</a>
+            <div>
+                <a href="workoutclient.html" class="px-3 py-2 rounded hover:bg-green-700">Allenamento</a>
+                <a href="nutritionclient.html" class="px-3 py-2 rounded hover:bg-green-700">Nutrizione</a>
+                <a href="progressesclient.html" class="px-3 py-2 rounded hover:bg-green-700">Progressi</a>
+                <a href="chatclient.html" class="px-3 py-2 rounded hover:bg-green-700">Chat</a>
+                <a href="profileclient.html" class="px-3 py-2 rounded hover:bg-green-700">Profilo</a>
+                <button onclick="window.signOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Esci
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-4">Libreria Esercizi</h1>
+        <div class="mb-6">
+            <input type="text" id="search-input" placeholder="Cerca un esercizio..." class="w-full p-3 border rounded-lg">
+        </div>
+
+        <div id="exercise-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Exercise cards will be dynamically inserted here -->
+            <p>Caricamento esercizi...</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/exercises-library-client.js"></script>
+</body>
+</html>

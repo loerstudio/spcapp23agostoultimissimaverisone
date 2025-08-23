@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allenamento Live</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-900 text-white h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="p-4">
+        <a href="workoutclient.html" class="text-blue-400 hover:text-blue-300">&larr; Torna al Programma</a>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
+        <div id="workout-container" class="w-full max-w-4xl text-center">
+
+            <!-- Exercise Display -->
+            <div id="exercise-display" class="mb-8">
+                <h1 id="exercise-name" class="text-5xl font-bold mb-2">Caricamento Allenamento...</h1>
+                <p id="exercise-sets-reps" class="text-3xl text-gray-300"></p>
+                <div id="media-container" class="mt-4 bg-black rounded-lg">
+                    <!-- Photo or video will be loaded here -->
+                </div>
+                <p id="exercise-notes" class="mt-4 text-lg text-gray-400"></p>
+            </div>
+
+            <!-- Timer Display -->
+            <div id="timer-display" class="hidden mb-8">
+                <p class="text-2xl">RIPOSO</p>
+                <p id="timer" class="text-8xl font-mono">01:30</p>
+            </div>
+
+            <!-- Controls -->
+            <div id="workout-controls" class="flex justify-center items-center space-x-8">
+                <button id="prev-btn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-lg">Precedente</button>
+                <button id="next-btn" class="bg-green-600 hover:bg-green-500 text-white font-bold py-6 px-12 rounded-full text-2xl">Prossimo</button>
+                <button id="finish-btn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-lg hidden">Fine</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/live-workout.js"></script>
+</body>
+</html>
