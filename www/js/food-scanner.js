@@ -44,11 +44,7 @@ async function handleFormSubmit(e) {
     analyzeBtn.textContent = 'Analisi in corso...';
 
     try {
-        // In a real application, this would call a Supabase Edge Function
-        // which would then securely call a third-party nutrition API.
-        // I will simulate this call with a placeholder function.
         const nutritionData = await analyzeFoodPhoto(file);
-
         displayResults(nutritionData);
 
     } catch (error) {
@@ -59,38 +55,46 @@ async function handleFormSubmit(e) {
     }
 }
 
-// --- Placeholder API Call ---
+// --- Real API Call to Edge Function ---
 async function analyzeFoodPhoto(file) {
-    console.log("Simulating analysis for file:", file.name);
-
-    // This is a mock function. It simulates a delay and returns a fixed result.
-    // In a real implementation, this would be replaced by a call to an Edge Function.
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                foodName: "Spaghetti al Ragù",
-                calories: 550,
-                protein: 25,
-                carbs: 60,
-                fat: 20
-            });
-        }, 2000); // Simulate 2-second API call
+    // Convert file to base64
+    const reader = new FileReader();
+    const base64String = await new Promise((resolve, reject) => {
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
     });
+
+    // Invoke the Edge Function
+    const { data, error } = await supabase.functions.invoke('analyze-food', {
+        body: { imageBase64: base64String },
+    });
+
+    if (error) {
+        throw new Error(`Function error: ${error.message}`);
+    }
+
+    // The Edge function might return an error object in its body
+    if (data.error) {
+        throw new Error(data.error);
+    }
+
+    return data;
 }
 
 function displayResults(data) {
-    if (!data) {
-        resultsContent.innerHTML = '<p>Impossibile analizzare il cibo nella foto.</p>';
+    if (!data || !data.foodName) {
+        resultsContent.innerHTML = '<p>Impossibile analizzare il cibo nella foto. Prova con un\'immagine più chiara.</p>';
         return;
     }
 
     resultsContent.innerHTML = `
         <h3 class="text-xl font-bold">${data.foodName}</h3>
         <ul class="mt-4 space-y-2">
-            <li><strong>Calorie:</strong> ${data.calories} kcal</li>
-            <li><strong>Proteine:</strong> ${data.protein} g</li>
-            <li><strong>Carboidrati:</strong> ${data.carbs} g</li>
-            <li><strong>Grassi:</strong> ${data.fat} g</li>
+            <li><strong>Calorie:</strong> ${data.calories || 'N/A'} kcal</li>
+            <li><strong>Proteine:</strong> ${data.protein || 'N/A'} g</li>
+            <li><strong>Carboidrati:</strong> ${data.carbs || 'N/A'} g</li>
+            <li><strong>Grassi:</strong> ${data.fat || 'N/A'} g</li>
         </ul>
     `;
 }
