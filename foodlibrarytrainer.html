@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Library - Trainer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="hometrainer.html" class="text-xl font-bold">Trainer Dashboard</a>
+            <div>
+                <a href="clientsmanagementstrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Clients</a>
+                <a href="programsmanagementtrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Programs</a>
+                <a href="nutritiontrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Nutrition</a>
+                <a href="chattrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Chat</a>
+                <a href="profiletrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Profile</a>
+                <button onclick="window.signOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold">Food Library</h1>
+            <button id="toggle-form-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                Add New Food
+            </button>
+        </div>
+
+        <!-- Add/Edit Food Form (collapsible) -->
+        <div id="food-form-container" class="hidden bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 id="form-title" class="text-2xl font-bold mb-4">Add New Food</h2>
+            <form id="food-form">
+                <input type="hidden" id="food-id">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="food-name" class="block text-gray-700 font-bold mb-2">Food Name</label>
+                        <input type="text" id="food-name" class="w-full px-3 py-2 border rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="food-calories" class="block text-gray-700 font-bold mb-2">Calories</label>
+                        <input type="number" id="food-calories" class="w-full px-3 py-2 border rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="food-protein" class="block text-gray-700 font-bold mb-2">Protein (g)</label>
+                        <input type="number" id="food-protein" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label for="food-carbs" class="block text-gray-700 font-bold mb-2">Carbs (g)</label>
+                        <input type="number" id="food-carbs" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label for="food-fat" class="block text-gray-700 font-bold mb-2">Fat (g)</label>
+                        <input type="number" id="food-fat" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label for="food-photo" class="block text-gray-700 font-bold mb-2">Photo</label>
+                        <input type="file" id="food-photo" accept="image/*" class="w-full">
+                        <img id="photo-preview" class="mt-2 h-32 hidden" alt="Photo Preview">
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-2 mt-4">
+                    <button type="button" id="cancel-edit-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Save Food</button>
+                </div>
+                 <div id="form-message" class="mt-4"></div>
+            </form>
+        </div>
+
+        <!-- Food List -->
+        <div id="food-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Food cards will be dynamically inserted here -->
+            <p>Loading food library...</p>
+        </div>
+    </div>
+
+    <script type="module" src="js/food-library.js"></script>
+</body>
+</html>

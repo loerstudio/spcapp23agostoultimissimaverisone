@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Progress - Trainer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="hometrainer.html" class="text-xl font-bold">Trainer Dashboard</a>
+            <div>
+                <a href="clientsmanagementstrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Back to Clients</a>
+                <button onclick="window.signOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+        <h1 id="page-title" class="text-3xl font-bold mb-6">Client Progress</h1>
+
+        <!-- Goal Information -->
+        <div id="goal-info" class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4">Current Goal</h2>
+            <p>Loading goal information...</p>
+        </div>
+
+        <!-- Progress Photos -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Progress Gallery</h2>
+            <div id="progress-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Progress photos will be inserted here -->
+                <p>Loading photos...</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/client-progress.js"></script>
+</body>
+</html>

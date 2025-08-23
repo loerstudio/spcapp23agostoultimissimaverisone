@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Programs - Trainer</title>
+    <title>Meal Plans - Trainer</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="module" src="js/auth.js" defer></script>
 </head>
@@ -28,19 +28,19 @@
 
     <div class="container mx-auto p-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold">Workout Programs</h1>
-            <a href="edit-program.html" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                Create New Program
+            <h1 class="text-3xl font-bold">Meal Plan Management</h1>
+            <a href="edit-meal-plan.html" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                Create New Meal Plan
             </a>
         </div>
 
-        <!-- Program List -->
-        <div id="program-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Program cards will be dynamically inserted here -->
-            <p>Loading programs...</p>
+        <!-- Meal Plan List -->
+        <div id="meal-plan-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Meal plan cards will be dynamically inserted here -->
+            <p>Loading meal plans...</p>
         </div>
     </div>
 
-    <script type="module" src="js/programs.js"></script>
+    <script type="module" src="js/meal-plans.js"></script>
 </body>
 </html>
