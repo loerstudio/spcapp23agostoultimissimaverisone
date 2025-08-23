@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Clienti - Allenatore</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="hometrainer.html" class="text-xl font-bold">Dashboard Allenatore</a>
+            <div>
+                <a href="clientsmanagementstrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Clienti</a>
+                <a href="programsmanagementtrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Programmi</a>
+                <a href="nutritiontrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Nutrizione</a>
+                <a href="chattrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Chat</a>
+                <a href="profiletrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Profilo</a>
+                <button onclick="window.signOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Esci
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-6">Gestione Clienti</h1>
+
+        <!-- Add Client Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold mb-4">Aggiungi Nuovo Cliente</h2>
+            <form id="add-client-form">
+                <div class="flex items-center">
+                    <input type="email" id="client-email" placeholder="Inserisci l'email del cliente" class="w-full p-2 border rounded-l-md" required>
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-r-md">Aggiungi Cliente</button>
+                </div>
+            </form>
+            <div id="add-client-message" class="mt-4"></div>
+        </div>
+
+        <!-- Client List -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">I Tuoi Clienti</h2>
+            <div id="client-list" class="space-y-4">
+                <!-- Client items will be dynamically inserted here -->
+                <p>Caricamento clienti...</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/clients.js"></script>
+</body>
+</html>

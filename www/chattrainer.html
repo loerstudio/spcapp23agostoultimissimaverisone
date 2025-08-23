@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Allenatore</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100 h-screen">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="hometrainer.html" class="text-xl font-bold">Dashboard Allenatore</a>
+            <div>
+                <a href="clientsmanagementstrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Clienti</a>
+                <a href="programsmanagementtrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Programmi</a>
+                <a href="nutritiontrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Nutrizione</a>
+                <a href="chattrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Chat</a>
+                <a href="profiletrainer.html" class="px-3 py-2 rounded hover:bg-blue-700">Profilo</a>
+                <button onclick="window.signOut()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Esci
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-4 h-full pb-24">
+        <div class="flex h-full bg-white rounded-lg shadow-md">
+            <!-- Left Column: Client List -->
+            <div class="w-1/3 border-r">
+                <div class="p-4 border-b">
+                    <h2 class="text-xl font-bold">I Tuoi Clienti</h2>
+                </div>
+                <ul id="client-list" class="overflow-y-auto h-full p-2">
+                    <!-- Client list items will be inserted here -->
+                    <li>Caricamento clienti...</li>
+                </ul>
+            </div>
+
+            <!-- Right Column: Chat Window -->
+            <div id="chat-window" class="w-2/3 flex flex-col">
+                <!-- Chat Header -->
+                <div id="chat-header" class="p-4 border-b">
+                    <h2 id="chat-with-name" class="text-xl font-bold">Seleziona un cliente per iniziare a chattare</h2>
+                </div>
+
+                <!-- Messages -->
+                <div id="messages-container" class="flex-grow p-4 overflow-y-auto">
+                    <!-- Messages will be inserted here -->
+                    <p class="text-center text-gray-500">Nessun cliente selezionato.</p>
+                </div>
+
+                <!-- Message Input Form -->
+                <div id="message-form-container" class="p-4 border-t hidden">
+                    <form id="message-form" class="flex">
+                        <input type="text" id="message-input" class="w-full px-3 py-2 border rounded-l-md" placeholder="Scrivi il tuo messaggio..." autocomplete="off" required>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-r-md">Invia</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/chat-trainer.js"></script>
+</body>
+</html>
